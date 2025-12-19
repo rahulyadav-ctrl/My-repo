@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Label Pricing Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="logo">Cyclone Pricing</div>
+    <div class="breadcrumbs">Workspaces / Cyclone</div>
+    <div class="actions">
+      <button class="pill ghost" id="add-rate-card">New rate card</button>
+      <button class="pill primary" id="generate-invoice">Generate invoice</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="panel summary">
+      <div>
+        <p class="eyebrow">This period</p>
+        <h1 id="kpi-revenue">$0</h1>
+        <p class="muted" id="period-label">Nov 1 - Nov 30</p>
+        <div class="date-range">
+          <label>From <input type="date" id="date-start"></label>
+          <label>To <input type="date" id="date-end"></label>
+        </div>
+      </div>
+      <div class="kpis">
+        <div class="card">
+          <p class="label">Frames</p>
+          <h3 id="kpi-frames">0</h3>
+        </div>
+        <div class="card">
+          <p class="label">Labels</p>
+          <h3 id="kpi-labels">0</h3>
+        </div>
+        <div class="card">
+          <p class="label">Attributes</p>
+          <h3 id="kpi-attrs">0</h3>
+        </div>
+        <div class="card">
+          <p class="label">Datasets</p>
+          <h3 id="kpi-datasets">0</h3>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <div>
+          <p class="eyebrow">Revenue trend</p>
+          <h2>Weekly breakdown</h2>
+        </div>
+        <div class="filters">
+          <select id="range-select">
+            <option value="4w">Last 4 weeks</option>
+            <option value="12w">Last 12 weeks</option>
+          </select>
+        </div>
+      </div>
+      <div id="trend-chart" class="chart"></div>
+    </section>
+
+    <section class="panel two-col">
+      <div>
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Rate cards</p>
+            <h2>Workspace & dataset overrides</h2>
+          </div>
+        </div>
+        <div id="rate-cards"></div>
+      </div>
+      <div>
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Submissions</p>
+            <h2>Recent activity</h2>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Dataset</th>
+              <th>Frames</th>
+              <th>Labels</th>
+              <th>Attrs</th>
+              <th>Revenue</th>
+            </tr>
+          </thead>
+          <tbody id="submissions-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <div>
+          <p class="eyebrow">Invoices</p>
+          <h2>Monthly billing</h2>
+        </div>
+      </div>
+      <div id="invoices"></div>
+    </section>
+  </main>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-head">
+        <h3>Create rate card</h3>
+        <button class="close" id="modal-close">×</button>
+      </div>
+      <form id="rate-card-form">
+        <label>
+          Scope
+          <select id="rc-scope">
+            <option value="workspace">Workspace: Cyclone</option>
+            <option value="dataset">Dataset override</option>
+          </select>
+        </label>
+        <label id="dataset-select-row">
+          Applies to
+          <select id="rc-dataset"></select>
+        </label>
+        <div class="table-like" id="rc-rows"></div>
+        <button type="button" class="pill ghost" id="add-row">Add line</button>
+        <button type="submit" class="pill primary full">Save rate card</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden">Saved</div>
+
+  <script src="app.js"></script>
+</body>
+</html>
+
