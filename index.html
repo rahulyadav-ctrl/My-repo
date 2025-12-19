@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spending Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="logo">Spending Dashboard</div>
+    <div class="breadcrumbs">Personal finance / December snapshot</div>
+  </header>
+
+  <main>
+    <section class="panel summary">
+      <div>
+        <p class="eyebrow">This period</p>
+        <h1 id="kpi-total">₹0</h1>
+        <p class="muted" id="period-label">Dec 1 – Dec 18</p>
+      </div>
+      <div class="kpis">
+        <div class="card clickable" id="card-investments">
+          <p class="label">Investments</p>
+          <h3 id="kpi-investments">₹0</h3>
+          <p class="muted" id="kpi-investments-share">0% of spend</p>
+        </div>
+        <div class="card clickable" id="card-fixed">
+          <p class="label">Living & fixed</p>
+          <h3 id="kpi-fixed">₹0</h3>
+          <p class="muted" id="kpi-fixed-share">0% of spend</p>
+        </div>
+        <div class="card clickable" id="card-lifestyle">
+          <p class="label">Food & lifestyle</p>
+          <h3 id="kpi-lifestyle">₹0</h3>
+          <p class="muted" id="kpi-lifestyle-share">0% of spend</p>
+        </div>
+        <div class="card clickable" id="card-transport">
+          <p class="label">Transport</p>
+          <h3 id="kpi-transport">₹0</h3>
+          <p class="muted" id="kpi-transport-share">0% of spend</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <div>
+          <p class="eyebrow">Where your money went</p>
+          <h2>Category breakdown</h2>
+        </div>
+      </div>
+      <div id="category-chart" class="chart"></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <div>
+          <p class="eyebrow">By bank</p>
+          <h2>Account-wise spends</h2>
+        </div>
+      </div>
+      <div id="bank-chart" class="chart"></div>
+    </section>
+
+    <section class="panel two-col">
+      <div>
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Daily pattern</p>
+            <h2>Timeline of spends</h2>
+          </div>
+        </div>
+        <div id="timeline-chart" class="chart"></div>
+      </div>
+      <div class="details hidden">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Largest items</p>
+            <h2>Top 10 transactions</h2>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Category</th>
+              <th>Amount</th>
+              <th>Type</th>
+            </tr>
+          </thead>
+          <tbody id="top-transactions"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel details hidden">
+      <div class="panel-head">
+        <div>
+          <p class="eyebrow">Suggested view</p>
+          <h2>Smart buckets</h2>
+        </div>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Bucket</th>
+            <th>Amount</th>
+            <th>Share of spend</th>
+          </tr>
+        </thead>
+        <tbody id="bucket-table"></tbody>
+      </table>
+    </section>
+
+    <section class="panel details hidden">
+      <div class="panel-head">
+        <div>
+          <p class="eyebrow">Drill-down</p>
+          <h2 id="breakdown-title">Click a card above to see details</h2>
+        </div>
+      </div>
+      <p class="muted" id="breakdown-total"></p>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Label</th>
+            <th>Amount</th>
+            <th>Bucket</th>
+          </tr>
+        </thead>
+        <tbody id="breakdown-body"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="bank-data.js"></script>
+  <script src="spend-dashboard.js"></script>
+</body>
+</html>
